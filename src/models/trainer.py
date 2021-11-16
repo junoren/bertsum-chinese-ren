@@ -144,8 +144,7 @@ class Trainer(object):
             logger.info('train_steps is %d , this step is %d' %
                         (train_steps, step))
             reduce_counter = 0
-            logger.info('train_iter is %s ' %train_iter)
-
+            logger.info('train_iter is %s ' % train_iter)
             for i, batch in enumerate(train_iter):
                 logger.info('i is %d ' %i)
                 if self.n_gpu == 0 or (i % self.n_gpu == self.gpu_rank):
@@ -173,12 +172,12 @@ class Trainer(object):
                         true_batchs = []
                         accum = 0
                         normalization = 0
-            if (step % self.save_checkpoint_steps == 0 and self.gpu_rank == 0):
-                self._save(step)
+                        if (step % self.save_checkpoint_steps == 0 and self.gpu_rank == 0):
+                            self._save(step)
 
-            step += 1
-            if step > train_steps:
-                break
+                        step += 1
+                        if step > train_steps:
+                            break
             train_iter = train_iter_fct()
 
         return total_stats

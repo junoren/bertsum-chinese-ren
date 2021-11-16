@@ -246,7 +246,7 @@ def format_to_lines(args):
         for d in corpora[corpus_type]:
             d_formated = _format_to_lines(d)
             dataset.append(d_formated)
-            if (len(dataset) > args.shard_size-1):
+            if (len(dataset) > args.shard_size - 1):
                 pt_file = "{:s}.{:s}.{:d}.json".format(args.save_path, corpus_type, p_ct)
                 with open(pt_file, 'w') as save:
                     # save.write('\n'.join(dataset))
